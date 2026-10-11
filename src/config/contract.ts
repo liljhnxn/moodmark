@@ -1,5 +1,4 @@
 import { defineChain } from "viem";
-import deployedContract from "./deployed-contract.json";
 
 export const botchainTestnet = defineChain({
   id: 968,
@@ -207,8 +206,7 @@ export const MOODS: Record<MoodEnum, MoodMeta> = {
 };
 
 export const CONTRACT_ADDRESS = (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-  (deployedContract as { address?: string })?.address ||
-  "") as `0x${string}`;
+  "0x09b5556f6802DF6bDeB942E3286947d83F2b41b4") as `0x${string}`;
 
 export const IS_CONTRACT_CONFIGURED =
   Boolean(CONTRACT_ADDRESS) &&
