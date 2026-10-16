@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMark — Whitepaper & Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --card-bg: #111522;
+      --border: #1e2638;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #8b5cf6;
+      --primary-light: #a78bfa;
+      --accent: #06b6d4;
+      --code-bg: #0d1117;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --card-bg: #ffffff;
+        --border: #e2e8f0;
+        --text: #0f172a;
+        --text-muted: #64748b;
+        --primary: #7c3aed;
+        --primary-light: #6d28d9;
+        --accent: #0891b2;
+        --code-bg: #f1f5f9;
+      }
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 20px;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+    header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 28px;
+      margin-bottom: 36px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 9999px;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--primary-light);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 16px;
+      padding: 16px;
+      background: var(--code-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .meta-grid a {
+      color: var(--accent);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .meta-grid a:hover {
+      text-decoration: underline;
+    }
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      margin-top: 36px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-top: 24px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    ul, ol {
+      margin-left: 24px;
+      margin-bottom: 16px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    strong {
+      color: #fff;
+    }
+    @media (prefers-color-scheme: light) {
+      strong {
+        color: #0f172a;
+      }
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+    }
+    pre, code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+    }
+    code {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      overflow-x: auto;
+      margin: 16px 0;
+      line-height: 1.5;
+    }
+    .ascii-diagram {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.35;
+      background: var(--code-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      color: var(--primary-light);
+    }
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 24px;
+      transition: opacity 0.2s;
+    }
+    .btn-print:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="no-print" style="display: flex; justify-content: flex-end;">
+      <button class="btn-print" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <header>
+      <span class="badge">Official Protocol Whitepaper</span>
+      <h1>MoodMark Protocol</h1>
+      <p class="subtitle">Decentralized Emotional Attestation & Sovereign Social Sentiment on Botchain</p>
+      
+      <div class="meta-grid">
+        <div><strong>Network:</strong> Botchain Testnet (Chain ID 968)</div>
+        <div><strong>Status:</strong> Mainnet / Testnet Verified</div>
+        <div><strong>Contract:</strong> <a href="https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code" target="_blank">0x09b5...41b4</a></div>
+        <div><strong>Repository:</strong> <a href="https://github.com/liljhnxn/moodmark" target="_blank">github.com/liljhnxn/moodmark</a></div>
+      </div>
+    </header>
+
+    <h2>1. Executive Summary</h2>
+    <p>
+      <strong>MoodMark</strong> is a minimal, gas-efficient decentralized application that establishes an open on-chain primitive for personal sentiment and emotional status. By anchoring daily moods directly into a verifiable Solidity smart contract on <strong>Botchain</strong>, MoodMark eliminates centralized database reliance, algorithmically manipulated feeds, and third-party tracking.
+    </p>
+
+    <h2>2. The Problem</h2>
+    <ul>
+      <li><strong>Centralized Exploitation:</strong> Traditional social applications hoard personal emotional records to fuel algorithmic recommendation loops and intrusive ad targeting.</li>
+      <li><strong>Lack of Social Primitives in Web3:</strong> While DeFi and NFT primitives thrive, Web3 lacks simple, trustless indicators for real-time human morale and user status.</li>
+      <li><strong>Fragility & Censorship:</strong> Off-chain mood trackers risk data loss, account freezing, and platform shutdown.</li>
+    </ul>
+
+    <h2>3. The MoodMark Architecture</h2>
+    <div class="ascii-diagram">
++───────────────────────────────────────────────────────────+
+│                    Next.js Frontend                       │
+│    (Wagmi v3 / Viem / React 19 / Tailwind CSS Client)     │
++───────────────────────────────────────────────────────────+
+                             │
+            EIP-1193 RPC     │ Signed Transactions
+            & eth_call       │ (setMood / getMood)
+                             ▼
++───────────────────────────────────────────────────────────+
+│              Botchain Testnet (Chain ID 968)              │
+│                                                           │
+│  +─────────────────────────────────────────────────────+  │
+│  │                   MoodMark.sol                      │  │
+│  │                                                     │  │
+│  │   - enum Mood (Happy, Okay, Sad, Excited, ...)      │  │
+│  │   - mapping(address => UserMood) (Storage Packed)   │  │
+│  │   - setMood(uint8 mood) [State Mutation]            │  │
+│  │   - getMood(address user) [Gasless View Call]       │  │
+│  │   - event MoodUpdated(address, Mood)                │  │
+│  +─────────────────────────────────────────────────────+  │
++───────────────────────────────────────────────────────────+
+    </div>
+
+    <h2>4. Smart Contract Specification</h2>
+    <p>The core contract (<code>MoodMark.sol</code>) is deployed with maximum gas efficiency:</p>
+    <ul>
+      <li><strong>Storage Packing:</strong> The <code>enum Mood</code> (1 byte) and <code>bool hasMood</code> (1 byte) fit within a single 32-byte storage slot per user.</li>
+      <li><strong>Custom Errors:</strong> Replaces expensive string reverts with custom error <code>InvalidMood()</code>.</li>
+      <li><strong>Event Indexing:</strong> Emits <code>MoodUpdated(address indexed user, Mood mood)</code> for zero-cost external indexers and explorer tracking.</li>
+    </ul>
+
+    <h2>5. Verified Deployment Details</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Configuration Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Network Name</strong></td>
+          <td>Botchain Testnet (Bohr)</td>
+        </tr>
+        <tr>
+          <td><strong>Chain ID</strong></td>
+          <td>968</td>
+        </tr>
+        <tr>
+          <td><strong>Native Currency</strong></td>
+          <td>Bohr (BOHR)</td>
+        </tr>
+        <tr>
+          <td><strong>RPC URL</strong></td>
+          <td>https://rpc.bohr.life</td>
+        </tr>
+        <tr>
+          <td><strong>Contract Address</strong></td>
+          <td><code>0x09b5556f6802DF6bDeB942E3286947d83F2b41b4</code></td>
+        </tr>
+        <tr>
+          <td><strong>BohrScan Verification</strong></td>
+          <td><a href="https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code" target="_blank">Verified Solidity Contract</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>6. Roadmap & Composability</h2>
+    <ol>
+      <li><strong>DAO Sentiment Gauges:</strong> Enable governance DAOs to measure community morale prior to voting.</li>
+      <li><strong>AI Agent Interaction:</strong> Provide real-time on-chain mood feeds for empathetic Botchain autonomous agents.</li>
+      <li><strong>Streak Achievements:</strong> Reward daily consistency with Soulbound NFT Badges.</li>
+      <li><strong>Account Abstraction:</strong> Implement ERC-4337 for gasless social check-ins.</li>
+    </ol>
+  </div>
+</body>
+</html>
