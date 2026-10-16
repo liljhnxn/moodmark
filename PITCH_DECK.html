@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MoodMark — Pitch Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090b10;
+      --card-bg: #111522;
+      --border: #1e2638;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --primary: #8b5cf6;
+      --accent: #06b6d4;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 30px 15px;
+    }
+    .slide {
+      max-width: 820px;
+      margin: 0 auto 30px auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px;
+      page-break-after: always;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    @media print {
+      body {
+        background: white;
+        color: black;
+        padding: 0;
+      }
+      .slide {
+        border: none;
+        box-shadow: none;
+        padding: 24px;
+        max-width: 100%;
+        page-break-after: always;
+      }
+    }
+    .slide-num {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 14px;
+    }
+    li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    pre {
+      font-family: 'JetBrains Mono', monospace;
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      color: #38bdf8;
+      overflow-x: auto;
+      margin: 12px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide">
+    <div class="slide-num">Slide 1: Mission</div>
+    <h2>MoodMark: Sovereign Sentiment on Botchain</h2>
+    <p><strong>Tagline:</strong> The immutable, decentralized layer for personal sentiment and on-chain social status.</p>
+    <ul>
+      <li><strong>Native Ecosystem:</strong> Built natively on Botchain Testnet (Chain ID 968).</li>
+      <li><strong>Core Value:</strong> Sovereign emotional attestations without algorithms, profiling, or centralized servers.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="slide-num">Slide 2: The Problem</div>
+    <h2>The Broken State of Web2 Mood Tracking</h2>
+    <ul>
+      <li><strong>Corporate Exploitation:</strong> User feelings are harvested for algorithmic outrage and ad profiling.</li>
+      <li><strong>Fragility & Censorship:</strong> Centralized databases can censor, alter, or delete personal histories.</li>
+      <li><strong>No Web3 Composability:</strong> On-chain communities lack lightweight social primitives to gauge morale.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="slide-num">Slide 3: The Solution</div>
+    <h2>The MoodMark Protocol</h2>
+    <ul>
+      <li><strong>On-Chain Attestation:</strong> 9 expressive moods recorded directly to <code>MoodMark.sol</code>.</li>
+      <li><strong>Zero Server Infrastructure:</strong> State is verified and stored purely on-chain.</li>
+      <li><strong>Universal Lookup:</strong> Instant real-time mood queries for any EVM wallet address.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="slide-num">Slide 4: Technical Architecture</div>
+    <h2>Gas-Optimized EVM Engineering</h2>
+    <ul>
+      <li><strong>Packed Storage:</strong> Enum (1 byte) + boolean (1 byte) in a single 32-byte EVM storage slot.</li>
+      <li><strong>Custom Errors:</strong> <code>InvalidMood()</code> eliminates high revert string bytecode costs.</li>
+      <li><strong>Next.js + Wagmi Client:</strong> Instant RPC connection and responsive dark theme UI.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <div class="slide-num">Slide 5: Verified Live Deployment</div>
+    <h2>Fully Operational on Botchain Testnet</h2>
+    <ul>
+      <li><strong>Network:</strong> Botchain Testnet (Bohr) — Chain ID 968</li>
+      <li><strong>Contract:</strong> <code>0x09b5556f6802DF6bDeB942E3286947d83F2b41b4</code></li>
+      <li><strong>Verification:</strong> Verified on BohrScan with 100% test pass rate.</li>
+    </ul>
+  </div>
+</body>
+</html>
