@@ -1,16 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { isAddress, createPublicClient, http } from "viem";
 import {
-  botchainTestnet,
+  botchainMainnet,
   CONTRACT_ADDRESS,
   IS_CONTRACT_CONFIGURED,
   MOODMARK_ABI,
   MoodEnum,
   MOODS,
 } from "@/config/contract";
-import { Search, Loader2, AlertCircle, HelpCircle } from "lucide-react";
+import { Search, Loader2, AlertCircle, HelpCircle, ExternalLink } from "lucide-react";
 
 interface LookupResult {
   address: string;
@@ -50,8 +51,8 @@ export function LookupWalletCard() {
       setIsLoading(true);
 
       const client = createPublicClient({
-        chain: botchainTestnet,
-        transport: http("https://rpc.bohr.life"),
+        chain: botchainMainnet,
+        transport: http("https://rpc.botchain.ai"),
       });
 
       const [moodValue, hasMood] = await client.readContract({
@@ -136,8 +137,24 @@ export function LookupWalletCard() {
         {/* Result */}
         {result && (
           <div className="mt-5 p-4 rounded-2xl bg-slate-950/60 border border-slate-800">
-            <div className="text-[11px] font-mono text-slate-400 mb-2 truncate">
-              Wallet: <span className="text-slate-200">{result.address}</span>
+            <div className="flex items-center justify-between text-[11px] font-mono text-slate-400 mb-2">
+              <span className="truncate">Wallet: <span className="text-slate-200">{result.address}</span></span>
+              <a
+                href={`https://scan.botchain.ai/address/${result.address}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition text-[11px] ml-2 shrink-0"
+              >
+                <Image
+                  src="/botchain-logo.png"
+                  alt="BOT Chain"
+                  width={14}
+                  height={14}
+                  className="w-3.5 h-3.5 object-contain rounded"
+                />
+                <span>Explorer</span>
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
 
             {result.hasMood && moodMeta ? (

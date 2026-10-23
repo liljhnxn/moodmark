@@ -15,9 +15,10 @@ const config = {
   },
   networks: {
     hardhat: {},
-    botchainTestnet: {
-      url: process.env.BOTCHAIN_RPC_URL || "https://rpc.bohr.life",
-      chainId: 968,
+    botchainMainnet: {
+      url: process.env.BOTCHAIN_MAINNET_RPC_URL || process.env.BOTCHAIN_RPC_URL || "https://rpc.botchain.ai",
+      chainId: 677,
+      gasPrice: 20000000000,
       accounts: process.env.PRIVATE_KEY
         ? [process.env.PRIVATE_KEY.startsWith("0x") ? process.env.PRIVATE_KEY : `0x${process.env.PRIVATE_KEY}`]
         : [],
@@ -25,15 +26,15 @@ const config = {
   },
   etherscan: {
     apiKey: {
-      botchainTestnet: "placeholder",
+      botchainMainnet: "placeholder",
     },
     customChains: [
       {
-        network: "botchainTestnet",
-        chainId: 968,
+        network: "botchainMainnet",
+        chainId: 677,
         urls: {
-          apiURL: "https://scan.bohr.life/api",
-          browserURL: "https://scan.bohr.life",
+          apiURL: "https://scan.botchain.ai/api",
+          browserURL: "https://scan.botchain.ai",
         },
       },
     ],

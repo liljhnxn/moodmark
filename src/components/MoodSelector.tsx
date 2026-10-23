@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { useAccount, useConnect, useWriteContract, useWaitForTransactionReceipt, useSwitchChain } from "wagmi";
 import {
-  botchainTestnet,
+  botchainMainnet,
   CONTRACT_ADDRESS,
   IS_CONTRACT_CONFIGURED,
   MOODMARK_ABI,
@@ -25,7 +26,7 @@ export function MoodSelector({ onMoodSaved }: MoodSelectorProps) {
   const [selectedMood, setSelectedMood] = useState<MoodEnum>(MoodEnum.Happy);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const isWrongNetwork = mounted && isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = mounted && isConnected && chainId !== botchainMainnet.id;
 
   const {
     data: hash,
@@ -64,7 +65,7 @@ export function MoodSelector({ onMoodSaved }: MoodSelectorProps) {
     }
 
     if (isWrongNetwork) {
-      switchChain({ chainId: botchainTestnet.id });
+      switchChain({ chainId: botchainMainnet.id });
       return;
     }
 
@@ -170,11 +171,11 @@ export function MoodSelector({ onMoodSaved }: MoodSelectorProps) {
             ) : isWrongNetwork ? (
               <button
                 type="button"
-                onClick={() => switchChain({ chainId: botchainTestnet.id })}
+                onClick={() => switchChain({ chainId: botchainMainnet.id })}
                 className="w-full py-4 px-6 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-base shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <AlertCircle className="w-5 h-5" />
-                <span>Switch to Botchain Testnet (Chain ID 968)</span>
+                <span>Switch to Botchain Mainnet (Chain ID 677)</span>
               </button>
             ) : (
               <button
@@ -211,11 +212,18 @@ export function MoodSelector({ onMoodSaved }: MoodSelectorProps) {
                 </p>
                 {hash && (
                   <a
-                    href={`https://scan.bohr.life/tx/${hash}`}
+                    href={`https://scan.botchain.ai/tx/${hash}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-purple-400 hover:underline mt-1"
+                    className="inline-flex items-center gap-1.5 text-purple-400 hover:underline mt-1"
                   >
+                    <Image
+                      src="/botchain-logo.png"
+                      alt="BOT Chain"
+                      width={14}
+                      height={14}
+                      className="w-3.5 h-3.5 object-contain rounded"
+                    />
                     <span>View transaction {hash.slice(0, 10)}...{hash.slice(-8)}</span>
                     <ExternalLink className="w-3 h-3" />
                   </a>
@@ -233,15 +241,22 @@ export function MoodSelector({ onMoodSaved }: MoodSelectorProps) {
                   Mood successfully recorded on the blockchain! 🎉
                 </p>
                 <p className="text-emerald-200/80">
-                  Your mood has been immutably updated on Botchain Testnet.
+                  Your mood has been immutably updated on BOT Chain Mainnet.
                 </p>
                 <div className="pt-1">
                   <a
-                    href={`https://scan.bohr.life/tx/${hash}`}
+                    href={`https://scan.botchain.ai/tx/${hash}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 font-mono text-emerald-400 hover:text-emerald-300 underline font-medium"
                   >
+                    <Image
+                      src="/botchain-logo.png"
+                      alt="BOT Chain"
+                      width={14}
+                      height={14}
+                      className="w-3.5 h-3.5 object-contain rounded"
+                    />
                     <span>Tx Hash: {hash.slice(0, 12)}...{hash.slice(-8)}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
                   </a>

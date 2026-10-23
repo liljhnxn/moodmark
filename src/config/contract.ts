@@ -1,29 +1,32 @@
 import { defineChain } from "viem";
 
-export const botchainTestnet = defineChain({
-  id: 968,
-  name: "Botchain Testnet",
+export const botchainMainnet = defineChain({
+  id: 677,
+  name: "Botchain Mainnet",
   nativeCurrency: {
     decimals: 18,
-    name: "Bohr",
-    symbol: "BOHR",
+    name: "Botchain",
+    symbol: "BOT",
   },
   rpcUrls: {
     default: {
-      http: ["https://rpc.bohr.life"],
+      http: ["https://rpc.botchain.ai"],
     },
     public: {
-      http: ["https://rpc.bohr.life"],
+      http: ["https://rpc.botchain.ai"],
     },
   },
   blockExplorers: {
     default: {
-      name: "BohrScan",
-      url: "https://scan.bohr.life",
+      name: "BotScan",
+      url: "https://scan.botchain.ai",
     },
   },
-  testnet: true,
+  testnet: false,
 });
+
+// Primary Botchain Mainnet
+export const botchain = botchainMainnet;
 
 export const MOODMARK_ABI = [
   {
@@ -206,7 +209,7 @@ export const MOODS: Record<MoodEnum, MoodMeta> = {
 };
 
 export const CONTRACT_ADDRESS = (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-  "0x09b5556f6802DF6bDeB942E3286947d83F2b41b4") as `0x${string}`;
+  "0xc7BffE6d09c808043F09AD12398528350B11539B") as `0x${string}`;
 
 export const IS_CONTRACT_CONFIGURED =
   Boolean(CONTRACT_ADDRESS) &&

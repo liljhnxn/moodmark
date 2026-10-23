@@ -3,8 +3,8 @@
 **Decentralized Emotional Attestation & Sovereign Social Sentiment on Botchain**  
 *Version 1.0 — October 2026*  
 *Repository: [https://github.com/liljhnxn/moodmark](https://github.com/liljhnxn/moodmark)*  
-*Network: Botchain Testnet (Chain ID: 968)*  
-*Verified Contract: [0x09b5556f6802DF6bDeB942E3286947d83F2b41b4](https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code)*  
+*Network: Botchain Mainnet (Chain ID: 677)*  
+*Verified Contract: [0xc7BffE6d09c808043F09AD12398528350B11539B](https://scan.botchain.ai/address/0xc7BffE6d09c808043F09AD12398528350B11539B)*  
 
 ---
 
@@ -43,7 +43,7 @@ MoodMark provides a minimal, sovereign, and code-enforced registry where users d
              & eth_call       │ (setMood / getMood)
                               ▼
 +-------------------------------------------------------------+
-|              Botchain Testnet (Chain ID 968)                |
+|              Botchain Mainnet (Chain ID 677)                |
 |                                                             |
 |   +─────────────────────────────────────────────────────+   |
 |   │                   MoodMark.sol                      │   |
@@ -58,7 +58,7 @@ MoodMark provides a minimal, sovereign, and code-enforced registry where users d
                               │
                               ▼
 +-------------------------------------------------------------+
-|                 BohrScan Explorer / Indexers                |
+|                 BotScan Explorer / Indexers                 |
 |      (Immutable Event Logs & Contract Code Verification)    |
 +-------------------------------------------------------------+
 ```
@@ -71,14 +71,9 @@ MoodMark provides a minimal, sovereign, and code-enforced registry where users d
 
 ---
 
-## 3. Technical Architecture & Smart Contract Design
+## 3. Architecture & Smart Contract Specification
 
-### 3.1 Contract Specification (`MoodMark.sol`)
-
-The core contract is written in Solidity `^0.8.20` with strict adherence to EVM gas efficiency and simplicity.
-
-#### Mood Enumeration
-MoodMark natively supports nine distinct emotional states:
+### 3.1 Data Structures
 ```solidity
 enum Mood {
     Happy,    // 0 😊
@@ -91,22 +86,16 @@ enum Mood {
     Loved,    // 7 🥰
     Anxious   // 8 😰
 }
-```
 
-#### Storage Layout
-```solidity
 struct UserMood {
-    Mood mood;      // uint8 (1 byte)
-    bool hasMood;   // boolean (1 byte)
+    Mood mood;     // 1 byte (uint8)
+    bool hasMood;  // 1 byte (boolean flag)
 }
-
-mapping(address => UserMood) private _userMoods;
 ```
-*Optimization Note*: Both `Mood` (represented as `uint8`) and `hasMood` (`bool`) consume 1 byte each and are tightly packed into a single 32-byte EVM storage slot per address. This eliminates multiple SSTORE costs and guarantees minimal execution fees.
 
+### 3.2 Core Functions
 #### State Mutation: `setMood(uint8 mood)`
-- Validates that the input index is strictly within the bounds of `Mood.Anxious` (`<= 8`).
-- Uses custom error `error InvalidMood();` rather than revert strings, saving deployment bytecode and runtime transaction gas.
+- Checks that `mood <= Mood.Anxious` (reverting with custom error `InvalidMood()`).
 - Updates storage and emits the indexed event `MoodUpdated(msg.sender, selectedMood)`.
 
 #### Gasless State Query: `getMood(address user)`
@@ -117,18 +106,19 @@ mapping(address => UserMood) private _userMoods;
 
 ## 4. Deployed Network & Verification Details
 
-MoodMark is deployed and verified on the Botchain Testnet:
+MoodMark is deployed and verified on the Botchain Mainnet:
 
 | Parameter | Network Specification |
 |---|---|
-| **Network Name** | Botchain Testnet |
-| **Chain ID** | `968` |
-| **Native Currency** | Bohr (`BOHR`) |
-| **RPC Endpoint** | `https://rpc.bohr.life` |
-| **Block Explorer** | `https://scan.bohr.life` |
-| **Contract Address** | `0x09b5556f6802DF6bDeB942E3286947d83F2b41b4` |
-| **Explorer Verification** | [View on BohrScan](https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code) |
-| **Compiler Version** | Solidity `v0.8.20+commit.a1b79de6` |
+| **Network Name** | Botchain Mainnet |
+| **Chain ID** | `677` |
+| **Native Currency** | BOT |
+| **Total Supply** | 150 Million |
+| **RPC Endpoint** | `https://rpc.botchain.ai` |
+| **Block Explorer** | `https://scan.botchain.ai` |
+| **Contract Address** | `0xc7BffE6d09c808043F09AD12398528350B11539B` |
+| **Explorer Verification** | [View on BotScan](https://scan.botchain.ai/address/0xc7BffE6d09c808043F09AD12398528350B11539B) |
+| **Compiler Version** | Solidity `v0.8.20` |
 | **Optimization** | Enabled (200 runs) |
 
 ---

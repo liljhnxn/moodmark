@@ -1,9 +1,9 @@
 # MoodMark — Pitch Deck
 
 **Decentralized Emotional Attestation & Sovereign Social Sentiment on Botchain**  
-*Network: Botchain Testnet (Chain ID: 968)*  
+*Network: Botchain Mainnet (Chain ID: 677)*  
 *Repository: [https://github.com/liljhnxn/moodmark](https://github.com/liljhnxn/moodmark)*  
-*Contract: [`0x09b5556f6802DF6bDeB942E3286947d83F2b41b4`](https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code)*  
+*Contract: [`0xc7BffE6d09c808043F09AD12398528350B11539B`](https://scan.botchain.ai/address/0xc7BffE6d09c808043F09AD12398528350B11539B)*  
 
 ---
 
@@ -41,7 +41,7 @@
             │
    4. Universal Lookup     ──▶  Search any wallet address for real-time mood
 ```
-- **Instant Feedback**: Real-time transaction confirmation and direct link to BohrScan explorer.
+- **Instant Feedback**: Real-time transaction confirmation and direct link to BotScan explorer.
 - **Dashboard**: Live reflection of current on-chain state with clear indicators for unset wallets.
 
 ---
@@ -53,17 +53,18 @@
   - Custom error handling (`InvalidMood()`) for minimal bytecode footprint.
 - **Frontend Client**:
   - Next.js (App Router, React 19)
-  - Wagmi v3 & Viem for robust RPC communication
+  - Wagmi v2 & Viem for robust RPC communication
   - Tailwind CSS v4 with dark mode aesthetics and responsive UI
 
 ---
 
 ## Slide 6: Verified Live Deployment
-### Fully Operational on Botchain Testnet
-- **Network**: Botchain Testnet (Bohr)
-- **Chain ID**: `968`
-- **Contract Address**: `0x09b5556f6802DF6bDeB942E3286947d83F2b41b4`
-- **Block Explorer**: [BohrScan Verified Contract](https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code)
+### Fully Operational on Botchain Mainnet
+- **Network**: Botchain Mainnet
+- **Chain ID**: `677`
+- **Native Token**: BOT (150 Million Total Supply)
+- **Contract Address**: `0xc7BffE6d09c808043F09AD12398528350B11539B`
+- **Block Explorer**: [BotScan Contract View](https://scan.botchain.ai/address/0xc7BffE6d09c808043F09AD12398528350B11539B)
 - **Unit Test Coverage**: 100% test pass rate with Hardhat & Chai (Boundary checks, state transitions, event emissions).
 
 ---
@@ -84,7 +85,7 @@
 ---
 
 ## Slide 9: Product Roadmap
-- **Phase 1 (Completed)**: Core smart contract deployment, BohrScan verification, responsive Next.js frontend, and universal wallet lookup.
+- **Phase 1 (Completed)**: Core smart contract deployment on Botchain Mainnet, BotScan integration, responsive Next.js frontend, and universal wallet lookup.
 - **Phase 2 (Next)**: Daily mood streak counters & soulbound NFT badges for consistent check-ins.
 - **Phase 3**: Botchain AI Agent sentiment oracle feeds & community-wide mood index dashboard.
 - **Phase 4**: Account Abstraction (ERC-4337) with gasless social transactions.
@@ -93,6 +94,6 @@
 
 ## Slide 10: Open Source & Links
 - **GitHub Repository**: [https://github.com/liljhnxn/moodmark](https://github.com/liljhnxn/moodmark)
-- **Verified Smart Contract**: [`0x09b5556f6802DF6bDeB942E3286947d83F2b41b4`](https://scan.bohr.life/address/0x09b5556f6802DF6bDeB942E3286947d83F2b41b4#code)
-- **Network RPC**: `https://rpc.bohr.life`
-- **Network Explorer**: `https://scan.bohr.life`
+- **Verified Smart Contract**: [`0xc7BffE6d09c808043F09AD12398528350B11539B`](https://scan.botchain.ai/address/0xc7BffE6d09c808043F09AD12398528350B11539B)
+- **Network RPC**: `https://rpc.botchain.ai`
+- **Network Explorer**: `https://scan.botchain.ai`

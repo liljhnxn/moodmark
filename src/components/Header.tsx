@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useAccount, useConnect, useDisconnect, useSwitchChain } from "wagmi";
-import { botchainTestnet } from "@/config/contract";
-import { Wallet, LogOut, AlertTriangle } from "lucide-react";
+import { botchainMainnet } from "@/config/contract";
+import { Wallet, LogOut, AlertTriangle, ExternalLink } from "lucide-react";
 
 import { useIsMounted } from "@/hooks/useIsMounted";
 
@@ -18,7 +19,7 @@ export function Header() {
   const { disconnect } = useDisconnect();
   const { switchChain, isPending: isSwitching } = useSwitchChain();
 
-  const isWrongNetwork = mounted && isConnected && chainId !== botchainTestnet.id;
+  const isWrongNetwork = mounted && isConnected && chainId !== botchainMainnet.id;
 
   const handleConnect = () => {
     // If only one connector or injected is available, connect directly
@@ -43,35 +44,60 @@ export function Header() {
               <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-purple-100 to-purple-400 bg-clip-text text-transparent">
                 MoodMark
               </span>
-              <span className="text-[10px] font-medium tracking-wide uppercase px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                Testnet
+              <span className="text-[10px] font-medium tracking-wide uppercase px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Mainnet
               </span>
             </div>
             <p className="text-xs text-slate-400 hidden sm:block">
-              On-chain mood ledger on Botchain
+              On-chain mood ledger on BOT Chain
             </p>
           </div>
         </div>
 
         {/* Actions / Wallet Status */}
         <div className="flex items-center gap-3">
+          {/* Mainnet Explorer Link with BOT Chain Logo at front */}
+          <a
+            href="https://scan.botchain.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-850 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-750 text-xs font-medium transition cursor-pointer"
+            title="Open BOT Chain Explorer"
+          >
+            <Image
+              src="/botchain-logo.png"
+              alt="BOT Chain Logo"
+              width={16}
+              height={16}
+              className="w-4 h-4 object-contain rounded"
+            />
+            <span>Explorer</span>
+            <ExternalLink className="w-3 h-3 text-purple-400" />
+          </a>
+
           {/* Wrong Network Warning */}
           {isWrongNetwork && (
             <button
-              onClick={() => switchChain({ chainId: botchainTestnet.id })}
+              onClick={() => switchChain({ chainId: botchainMainnet.id })}
               disabled={isSwitching}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-medium transition cursor-pointer"
             >
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-              <span>{isSwitching ? "Switching..." : "Switch to Botchain (968)"}</span>
+              <span>{isSwitching ? "Switching..." : "Switch to BOT Chain (677)"}</span>
             </button>
           )}
 
-          {/* Network Pill when connected correctly */}
+          {/* Network Pill when connected correctly with BOT Chain Logo */}
           {mounted && isConnected && !isWrongNetwork && (
             <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Botchain Testnet</span>
+              <Image
+                src="/botchain-logo.png"
+                alt="BOT Chain Logo"
+                width={14}
+                height={14}
+                className="w-3.5 h-3.5 object-contain rounded"
+              />
+              <span>BOT Chain Mainnet</span>
             </div>
           )}
 

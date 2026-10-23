@@ -43,5 +43,5 @@ next-env.d.ts
 # hardhat
 cache/
 artifacts/
-deployed-contract.json
+/deployed-contract.json
 !.env.example

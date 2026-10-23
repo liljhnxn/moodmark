@@ -9,8 +9,8 @@
     "lint": "eslint",
     "compile": "hardhat compile",
     "test": "hardhat test",
-    "deploy": "hardhat run scripts/deploy.js --network botchainTestnet",
-    "verify": "hardhat verify --network botchainTestnet"
+    "deploy": "node scripts/deploy.js",
+    "deploy:mainnet": "node scripts/deploy.js"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.104.1",

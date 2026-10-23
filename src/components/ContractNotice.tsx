@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import { CONTRACT_ADDRESS, IS_CONTRACT_CONFIGURED } from "@/config/contract";
 import { AlertCircle, ExternalLink } from "lucide-react";
 
@@ -14,12 +13,19 @@ export function ContractNotice() {
             <span className="font-mono text-purple-300 select-all">{CONTRACT_ADDRESS}</span>
           </div>
           <a
-            href={`https://scan.bohr.life/address/${CONTRACT_ADDRESS}`}
+            href={`https://scan.botchain.ai/address/${CONTRACT_ADDRESS}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-purple-400 hover:text-purple-300 transition"
+            className="flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition"
           >
-            <span>View on BohrScan</span>
+            <Image
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              width={14}
+              height={14}
+              className="w-3.5 h-3.5 object-contain rounded"
+            />
+            <span>View on BotScan</span>
             <ExternalLink className="w-3 h-3" />
           </a>
         </div>
@@ -37,10 +43,10 @@ export function ContractNotice() {
               Contract Address Not Yet Configured
             </h4>
             <p className="text-amber-200/80 leading-relaxed">
-              MoodMark is ready to interact with Botchain Testnet (Chain ID 968). To connect the frontend to your deployed contract:
+              MoodMark is ready to interact with Botchain Mainnet (Chain ID 677). To connect the frontend to your deployed contract:
             </p>
             <ol className="list-decimal list-inside space-y-1 text-amber-200/90 font-mono text-xs bg-black/30 p-2.5 rounded-lg border border-amber-500/20">
-              <li>Deploy the contract: <span className="text-purple-300">npx hardhat run scripts/deploy.js --network botchainTestnet</span></li>
+              <li>Deploy the contract: <span className="text-purple-300">npm run deploy:mainnet</span></li>
               <li>Or set <span className="text-purple-300">NEXT_PUBLIC_CONTRACT_ADDRESS=0x...</span> in your <span className="text-purple-300">.env.local</span></li>
             </ol>
             <p className="text-[11px] text-amber-300/70">

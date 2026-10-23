@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Image from "next/image";
 import { useIsMounted } from "@/hooks/useIsMounted";
 import { useAccount, useReadContract } from "wagmi";
 import {
@@ -10,7 +11,7 @@ import {
   MoodEnum,
   MOODS,
 } from "@/config/contract";
-import { RefreshCw, UserCheck, HeartHandshake, AlertCircle } from "lucide-react";
+import { RefreshCw, UserCheck, HeartHandshake, AlertCircle, ExternalLink } from "lucide-react";
 
 interface MyMoodCardProps {
   refetchTrigger?: number;
@@ -141,8 +142,23 @@ export function MyMoodCard({ refetchTrigger }: MyMoodCardProps) {
 
       {isConnected && address && (
         <div className="pt-4 border-t border-slate-800/60 mt-4 flex items-center justify-between text-[11px] text-slate-400 font-mono">
-          <span>Connected:</span>
-          <span className="text-slate-300">{`${address.slice(0, 6)}...${address.slice(-4)}`}</span>
+          <span>Connected: <span className="text-slate-300">{`${address.slice(0, 6)}...${address.slice(-4)}`}</span></span>
+          <a
+            href={`https://scan.botchain.ai/address/${address}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition text-[11px]"
+          >
+            <Image
+              src="/botchain-logo.png"
+              alt="BOT Chain"
+              width={14}
+              height={14}
+              className="w-3.5 h-3.5 object-contain rounded"
+            />
+            <span>View on BotScan</span>
+            <ExternalLink className="w-3 h-3" />
+          </a>
         </div>
       )}
     </div>
