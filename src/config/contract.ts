@@ -208,8 +208,8 @@ export const MOODS: Record<MoodEnum, MoodMeta> = {
   },
 };
 
-export const CONTRACT_ADDRESS = (process.env.NEXT_PUBLIC_CONTRACT_ADDRESS ||
-  "0xc7BffE6d09c808043F09AD12398528350B11539B") as `0x${string}`;
+// Botchain Mainnet Deployed & Verified MoodMark Contract (Chain ID: 677)
+export const CONTRACT_ADDRESS = "0xc7BffE6d09c808043F09AD12398528350B11539B" as `0x${string}`;
 
 export const IS_CONTRACT_CONFIGURED =
   Boolean(CONTRACT_ADDRESS) &&
